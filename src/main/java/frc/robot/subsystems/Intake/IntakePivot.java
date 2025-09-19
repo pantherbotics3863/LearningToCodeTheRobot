@@ -1,5 +1,3 @@
-// All rights reserved by Pantherbotics
-
 package frc.robot.subsystems.Intake;
 
 import static edu.wpi.first.units.Units.*;
