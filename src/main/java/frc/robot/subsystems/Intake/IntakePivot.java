@@ -5,6 +5,7 @@ package frc.robot.subsystems.Intake;
 import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.controls.MotionMagicTorqueCurrentFOC;
+import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
 
@@ -20,9 +21,7 @@ public class IntakePivot extends SubsystemBase {
   private final MotionMagicTorqueCurrentFOC m_positionRequest = new MotionMagicTorqueCurrentFOC(0);
 
   public IntakePivot() {
-    
     m_motor.getConfigurator().apply(IntakeConstants.kPivotMotorConfigs);
-
   }
 
 
@@ -30,7 +29,7 @@ public class IntakePivot extends SubsystemBase {
     return this.runOnce(()->{
       if (m_hasBeenZeroed){
         m_motor.setControl(
-          m_positionRequest.withPosition(angle)
+          m_positionRequest
         );
       }
     }).andThen(Commands.idle())
